@@ -29,8 +29,9 @@ const images = [
 const carousel = document.getElementById('carousel');
 const buttonUp = document.getElementById('button-up');
 const buttonDown = document.getElementById('button-down');
+const thumbnailsContainer = document.querySelector('.thumbnails-container');
 
-
+startAutoplay();
 
 for (let index = 0; index < images.length; index++) {
     const element = images[index];
@@ -43,11 +44,18 @@ for (let index = 0; index < images.length; index++) {
     description.classList.add('description-container');
     carouselInner.appendChild(description);
 
+    let thumbnails = document.createElement('div');
+    thumbnails.classList.add('single-thumbnails');
+    thumbnailsContainer.appendChild(thumbnails);
+
+
+
     for (const key in element) {
 
         if (key === 'image') {
             
             let img = document.createElement('img');
+            img.classList.add('carousel-img')
             img.src = element[key];
             carouselInner.appendChild(img);
         } 
@@ -61,6 +69,21 @@ for (let index = 0; index < images.length; index++) {
             let movieDescription = document.createElement('p');
             movieDescription.innerHTML = `${element[key]}`;
             description.appendChild(movieDescription);
+        }
+    }
+
+    for( const key in element){
+        if (key === 'image') {
+            
+            let img = document.createElement('img');
+            img.classList.add('thumbnails-img','thumbnails-img-style','thumbnails-'+`${index}`);
+            img.src = element[key];
+            thumbnails.appendChild(img);
+        } 
+
+        let img = document.querySelector('.thumbnails-img');
+        if(index == 0){
+            img.classList.remove('thumbnails-img-style');
         }
     }
 
@@ -82,12 +105,27 @@ buttonDown.addEventListener('click', () => {
     currentImgDisplayed();
 });
 
+
 function currentImgDisplayed() {
 
     for (let i = 0; i < images.length; i++) {
         let imgDisplayed = document.querySelector('.img-' + i);
         imgDisplayed.classList.add('d-none');
+
+        let thumbnailsDisplayed = document.querySelector('.thumbnails-'+ i);
+        thumbnailsDisplayed.classList.add('thumbnails-img-style');
     }
     let currentCarouselImg = document.querySelector('.img-' + currentImg);
     currentCarouselImg.classList.remove('d-none');
+
+    let curentThumbnails = document.querySelector('.thumbnails-' + currentImg);
+    curentThumbnails.classList.remove('thumbnails-img-style');
+
 }
+
+function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      currentImg = (currentImg + 1) % images.length;
+      currentImgDisplayed();
+    }, 3000);
+  }

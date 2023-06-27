@@ -43,6 +43,9 @@ body {
     bottom: 1.25rem;
     text-align: end;
     padding: 10px;
+    background-color: rgba(0, 0, 0, 0.655);
+    margin-left: 1.25rem;
+    
 }
 
 h2 {
@@ -56,7 +59,7 @@ p {
     font-size: small;
 }
 
-img {
+.carousel-img {
     width: 100%;
     max-height: 100%;
     min-height: 18.75rem;
@@ -95,4 +98,28 @@ img {
 
 .carousel:hover #button-down {
     display: inline-block;
+}
+
+.thumbnails-container {
+    width: 25%;
+    height: 18.75rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.thumbnails-img {
+    height: 3.75rem;
+    width: 100%;
+    object-fit: cover;
+    
+    
+}
+
+.single-thumbnails {
+    background-color: white;
+    
+}
+
+.thumbnails-img-style {
+    opacity: 0.3;
 }
