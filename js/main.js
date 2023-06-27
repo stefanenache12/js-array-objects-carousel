@@ -31,7 +31,7 @@ const buttonUp = document.getElementById('button-up');
 const buttonDown = document.getElementById('button-down');
 const thumbnailsContainer = document.querySelector('.thumbnails-container');
 
-startAutoplay();
+let autoplayInterval;
 
 for (let index = 0; index < images.length; index++) {
     const element = images[index];
@@ -47,8 +47,6 @@ for (let index = 0; index < images.length; index++) {
     let thumbnails = document.createElement('div');
     thumbnails.classList.add('single-thumbnails');
     thumbnailsContainer.appendChild(thumbnails);
-
-
 
     for (const key in element) {
 
@@ -93,6 +91,8 @@ for (let index = 0; index < images.length; index++) {
     
 }
 
+
+
 let currentImg = 0;
 
 buttonUp.addEventListener('click', () => {
@@ -105,6 +105,11 @@ buttonDown.addEventListener('click', () => {
     currentImgDisplayed();
 });
 
+let buttonStart = document.getElementById('button-start').addEventListener('click',startAutoplay);
+let buttonStop = document.getElementById('button-stop').addEventListener('click',stopAutoplay);
+
+
+startAutoplay();
 
 function currentImgDisplayed() {
 
@@ -123,9 +128,15 @@ function currentImgDisplayed() {
 
 }
 
+
+
 function startAutoplay() {
     autoplayInterval = setInterval(() => {
       currentImg = (currentImg + 1) % images.length;
       currentImgDisplayed();
     }, 3000);
-  }
+}
+
+function stopAutoplay() {
+    clearInterval(autoplayInterval);
+}

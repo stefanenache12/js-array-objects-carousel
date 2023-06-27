@@ -92,6 +92,24 @@ p {
     z-index: 99;
 }
 
+#button-start {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    translate: -50% 0;
+    display: none;
+    z-index: 99;
+}
+
+#button-stop {
+    position: absolute;
+    top: 0;
+    left: 60%;
+    translate: -50% 0;
+    display: none;
+    z-index: 99;
+}
+
 .carousel:hover #button-up {
     display: inline-block;
 }
@@ -99,6 +117,18 @@ p {
 .carousel:hover #button-down {
     display: inline-block;
 }
+.carousel:hover #button-start {
+    display: inline-block;
+}
+
+.carousel:hover #button-stop {
+    display: inline-block;
+}
+
+button:active{
+    scale: 1.2;
+}
+
 
 .thumbnails-container {
     width: 25%;
