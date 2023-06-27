@@ -5,3 +5,67 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: blanchedalmond;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel {
+    height: 18.75rem;
+    width: 43.75rem;
+    position: relative;
+    border: 1px solid black;
+}
+
+#carousel {
+    height: 18.75rem;;
+    width: 43.75rem;
+}
+
+img {
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.button-style {
+    background-color: transparent;
+    border: none;
+    color: white;
+}
+
+#button-up {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 10;
+    display: none;
+    
+}
+
+#button-down {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    translate: -50% 0;
+    display: none;
+}
+
+.carousel:hover #button-up {
+    display: inline-block;
+}
+
+.carousel:hover #button-down {
+    display: inline-block;
+}
